@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="LP1_-_GP1.ANGELY" default="default" basedir=".">
-    <description>Builds, tests, and runs the project LP1 - GP1.ANGELY.</description>
+<project name="LP1_-_GP1.Proyect" default="default" basedir=".">
+    <description>Builds, tests, and runs the project LP1 - GP1.Proyect.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
