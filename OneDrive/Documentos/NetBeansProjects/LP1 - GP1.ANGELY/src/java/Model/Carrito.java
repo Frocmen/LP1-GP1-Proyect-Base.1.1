@@ -6,7 +6,7 @@ package Model;
 
 /**
  *
- * @author Frocmen LAME CULOS DE MENORES
+ * @author Frocmen 
  */
 public class Carrito {
     
