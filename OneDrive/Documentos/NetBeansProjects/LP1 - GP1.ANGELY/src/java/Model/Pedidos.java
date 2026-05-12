@@ -9,5 +9,5 @@ package Model;
  * @author Frocmen
  */
 public class Pedidos {
-    
+    private int idPedidos;
 }

@@ -9,5 +9,5 @@ package Model;
  * @author Frocmen
  */
 public class EstadoPedido {
-    
+    private int EstadoPedido;
 }

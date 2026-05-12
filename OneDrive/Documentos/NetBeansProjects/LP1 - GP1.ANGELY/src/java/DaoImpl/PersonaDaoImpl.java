@@ -11,11 +11,12 @@ import Model.Usuario;
 import java.util.List;
 import java.sql.*;
 import Util.ConexionSingleton;
+
 /**
  *
  * @author Frocmen
  */
-    public class PersonaDaoImpl implements IPersona {
+public class PersonaDaoImpl implements IPersona {
 
     private Connection cn;
 
@@ -32,8 +33,8 @@ import Util.ConexionSingleton;
         int id_persona = 0;
         int r = 0;
         try {
-            query = "INSERT INTO persona(nombre,email,direccion,telefono)"
-                    + " VALUES (?, ?, ?, ?)";
+            query = " INSERT INTO persona(nombre,email,dirección,telefono)"
+                    + " VALUES(?,?,?,?)";
             cn = ConexionSingleton.getConnection();
             st = cn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, p.getNombre());
@@ -51,9 +52,9 @@ import Util.ConexionSingleton;
                 }
                 if (id_persona > 0) {
                     u.setRol(Rol.CLIENTE);
-                    String hashedPassword = u.HashPassword(u.getClave());
-                    query = "INSERT INTO usuarios(usuario,password,rol,id_persona)"
-                            + " VALUES (?,?,?,?)";
+                    String hashedPassword = u.HashClave(u.getClave());
+                    query = " INSERT INTO usuarios(usuario,password,rol,id_persona)"
+                            + " VALUES(?,?,?,?)";
                     st = cn.prepareStatement(query);
                     st.setString(1, p.getEmail());
                     st.setString(2, hashedPassword);
@@ -102,4 +103,3 @@ import Util.ConexionSingleton;
     }
 
 }
-
