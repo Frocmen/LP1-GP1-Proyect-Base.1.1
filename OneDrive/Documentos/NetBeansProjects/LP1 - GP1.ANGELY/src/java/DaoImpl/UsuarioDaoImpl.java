@@ -32,13 +32,12 @@ public class UsuarioDaoImpl implements IUsuario {
             u = new Usuario();
             p = new Persona();
             String hashedPassword = u.HashClave(clave);
-            query = " select u.id_usuario, u.usuario, u.rol, p.id_persona,"
+            query = " select u.id_usuario, u.usuario, u.rol,  p.id_persona,"
                     + " p.nombre "
                     + " FROM persona p, usuarios u "
-                    + " where p.id_persona = u.id_persona "
+                    + " WHERE p.id_persona = u.id_persona "
                     + " AND u.usuario = ? "
                     + " AND u.password = ?";
-
             // CONEXION SINGLETON. MySQLWorkBench, envío y retorno de los datos.
             cn = ConexionSingleton.getConnection();
             st = cn.prepareStatement(query);

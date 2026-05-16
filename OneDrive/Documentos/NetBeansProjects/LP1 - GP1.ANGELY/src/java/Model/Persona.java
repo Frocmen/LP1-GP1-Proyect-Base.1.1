@@ -13,17 +13,17 @@ public class Persona {
     private String nombre;
     private String email;
     private String telefono;
-    private String dirección;
+    private String direccion;
 
     public Persona() {
     }
 
-    public Persona(int id_persona, String nombre, String email, String telefono, String dirección) {
+    public Persona(int id_persona, String nombre, String email, String telefono, String direccion) {
         this.id_persona = id_persona;
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
-        this.dirección = dirección;
+        this.direccion = direccion;
     }
 
     public int getId_persona() {
@@ -58,12 +58,12 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    public String getDirección() {
-        return dirección;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirección(String dirección) {
-        this.dirección = dirección;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
     
     

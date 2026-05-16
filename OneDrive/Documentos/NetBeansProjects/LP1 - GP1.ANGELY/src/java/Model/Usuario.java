@@ -67,7 +67,7 @@ public class Usuario {
         this.persona = persona;
     }
 
-    public String HashClave(String clave) {
+      public String HashClave(String clave) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(clave.getBytes());

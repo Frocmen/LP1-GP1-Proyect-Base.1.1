@@ -28,13 +28,10 @@ public class ProductoDaoImpl implements IProducto {
         String query = null;
 
         try {
-            query = " SELECT id_producto,nombre,descripción,"
+            query = " SELECT id_producto,nombre,descripcion,"
                     + " precio,stock FROM productos ";
 
             Lista = new ArrayList<>();
-            if (cn == null || cn.isClosed()) {
-                System.out.println(" LA CONEXIÓN SE ENCUENTRA CERRADA ");
-            }
             cn = ConexionSingleton.getConnection();
             st = cn.prepareStatement(query);
             rs = st.executeQuery();
@@ -42,7 +39,7 @@ public class ProductoDaoImpl implements IProducto {
                 pr = new Productos();
                 pr.setId_producto(rs.getInt("id_producto"));
                 pr.setNombre(rs.getString("nombre"));
-                pr.setDescripción(rs.getString("descripción"));
+                pr.setDescripcion(rs.getString("descripcion"));
                 pr.setPrecio(rs.getDouble("precio"));
                 pr.setStock(rs.getInt("stock"));
                 Lista.add(pr);

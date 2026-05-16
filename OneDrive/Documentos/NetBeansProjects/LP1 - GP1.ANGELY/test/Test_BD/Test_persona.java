@@ -19,15 +19,15 @@ public class Test_persona {
 
     public static void main(String[] args) {
         Test_persona tp = new Test_persona();
-        tp.crea_persona();
-        //tp.validarUsuario();
+        //tp.crea_persona();
+        tp.validarUsuario();
     }
 
     public void crea_persona() {
         Persona p = new Persona();
         p.setNombre("Frocmen");
         p.setEmail("Frocmen.Villacorta@gmail.com");
-        p.setDirección("FONAVI");
+        p.setDireccion("FONAVI");
         p.setTelefono("+51 928 593 599");
 
         Usuario u = new Usuario();
@@ -35,7 +35,6 @@ public class Test_persona {
         u.setRol(Rol.CLIENTE);
         int result = dao.insert(p, u);
         if (result > 0) {
-            System.out.println("PERSONA + USUARIO  ||   CREADOS");
             System.out.println("Usuario" + p.getEmail());
             System.out.println("Rol asignado" + u.getRol());
         } else {
@@ -48,9 +47,6 @@ public class Test_persona {
         if (u != null && u.getPersona() != null) {
             System.out.println("BIENVENIDO: " + u.getPersona().getNombre());
             System.out.println("ROL: " + u.getRol());
-            System.out.println("USUARIO: " + u.getUsuario());
-            System.out.println("UserID: " + u.getId_usuario());
-            System.out.println("PersonaID: " + u.getPersona().getId_persona());
         } else {
             System.out.println("CREDENCIALES INCORRECTAS");
         }

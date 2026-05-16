@@ -33,16 +33,15 @@ public class PersonaDaoImpl implements IPersona {
         int id_persona = 0;
         int r = 0;
         try {
-            query = " INSERT INTO persona(nombre,email,dirección,telefono)"
+            query = " INSERT INTO persona(nombre,email,direccion,telefono)"
                     + " VALUES(?,?,?,?)";
             cn = ConexionSingleton.getConnection();
             st = cn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, p.getNombre());
             st.setString(2, p.getEmail());
-            st.setString(3, p.getDirección());
+            st.setString(3, p.getDireccion());
             st.setString(4, p.getTelefono());
             r = st.executeUpdate();
-
             if (r != 0) {
                 rs = st.getGeneratedKeys();
                 if (rs.next()) {

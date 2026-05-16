@@ -11,7 +11,7 @@ package Model;
 public class Productos {
      private int id_producto;
     private String nombre;
-    private String descripción;
+    private String descripcion;
     private double precio;
     private int stock;
     private String imagen;
@@ -19,10 +19,10 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(int id_producto, String nombre, String descripción, double precio, int stock, String imagen) {
+    public Productos(int id_producto, String nombre, String descripcion, double precio, int stock, String imagen) {
         this.id_producto = id_producto;
         this.nombre = nombre;
-        this.descripción = descripción;
+        this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
         this.imagen = imagen;
@@ -44,12 +44,12 @@ public class Productos {
         this.nombre = nombre;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getPrecio() {
