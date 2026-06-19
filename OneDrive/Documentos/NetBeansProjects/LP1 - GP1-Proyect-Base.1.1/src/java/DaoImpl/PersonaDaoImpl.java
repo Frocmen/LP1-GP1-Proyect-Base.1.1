@@ -28,62 +28,59 @@ public class PersonaDaoImpl implements IPersona {
     @Override
     public int insert(Persona p, Usuario u) {
         PreparedStatement st;
-        String query = null;
-        ResultSet rs;
-        int id_persona = 0;
-        int r = 0;
+       String query=null;
+       ResultSet rs;
+       int id_persona = 0;
+       int r =0;
         try {
-            query = " INSERT INTO persona(nombre,email,direccion,telefono)"
-                    + " VALUES(?,?,?,?)";
-            cn = ConexionSingleton.getConnection();
-            st = cn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            st.setString(1, p.getNombre());
-            st.setString(2, p.getEmail());
-            st.setString(3, p.getDireccion());
-            st.setString(4, p.getTelefono());
-            r = st.executeUpdate();
-            if (r != 0) {
-                rs = st.getGeneratedKeys();
-                if (rs.next()) {
-                    //linea que devuelve el id de la persona creada
-                    id_persona = rs.getInt(1);
-                    System.out.println("id_recuperado:" + id_persona);
-                }
-                if (id_persona > 0) {
-                    u.setRol(Rol.CLIENTE);
-                    String hashedPassword = u.HashClave(u.getClave());
-                    query = " INSERT INTO usuarios(usuario,password,rol,id_persona)"
-                            + " VALUES(?,?,?,?)";
-                    st = cn.prepareStatement(query);
-                    st.setString(1, p.getEmail());
-                    st.setString(2, hashedPassword);
-                    st.setString(3, u.getRol().name());
-                    st.setInt(4, id_persona);
-                    r = st.executeUpdate();
-                } else {
-                    System.out.println("Error al agregar una persona");
-                }
-            }
-
+            query = "INSERT INTO persona(nombre,email,telefono,direccion)" +
+                     "VALUES(?,?,?,?)";
+              cn = ConexionSingleton.getConnection();
+              st=cn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+              st.setString(1, p.getNombre());
+              st.setString(2, p.getEmail());
+              st.setString(3, p.getDireccion());
+              st.setString(4, p.getTelefono());
+              r= st.executeUpdate();
+              if (r!=0) {
+                  rs= st.getGeneratedKeys();
+                  if (rs.next()) {
+                      id_persona =rs.getInt(1);
+                      System.out.println("id_recuperado"+id_persona);
+                  }
+                  if (id_persona>0) {
+                      u.setRol(Rol.CLIENTE);
+                      String hashedPassword = u.HashClave(u.getClave());
+                      query = " INSERT INTO usuarios(usuario,password,rol,id_persona)"
+                              + " VALUES(?,?,?,?)";
+                      st = cn.prepareStatement(query);
+                       st.setString(1, p.getEmail());
+                       st.setString(2,hashedPassword );
+                       st.setString(3,u.getRol().name());
+                       st.setInt(4,id_persona);
+                       r= st.executeUpdate();
+                  } else {
+                      System.out.println("Error al agregar persona");
+                  }   
+               }
+            
         } catch (Exception e) {
-            System.out.println("error al agregar" + e.getMessage());
+            System.out.println("Error al agregar"+e.getMessage());
             try {
                 cn.rollback();
             } catch (Exception ex) {
-                System.out.println("error de rollback" + e.getMessage());
-
+                System.out.println("error de rollback"+ex.getMessage());
             }
-
+            
         } finally {
-            if (cn != null) {
-                try {
+            if (cn!=null) {
+                try {  
                 } catch (Exception ex) {
                 }
-
             }
         }
         return r;
-
+        
     }
 
     @Override
